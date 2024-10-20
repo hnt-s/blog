@@ -17,9 +17,9 @@ export default function About(){
             </div>
             <div className="text-center pb-10">
                 <h1 className="text-lg font-semibold leading-9">本サイトについて</h1>
-                <p>Blog Treeは、読んだ本や学んだ技術をまとめた記録ブログです。</p>
-                <p>このサイトは、Next.js と TypeScript で構築されています。</p><br/>
-                <p>現在私は大学生で、情報系の分野を専攻しています。<br/>新しいことに挑戦することが好きで、自分のモチベーション維持に役立てるためにブログを作成しました。</p>
+                <p className="p-3">Blog Treeは、読んだ本や学んだ技術をまとめた記録ブログです。<br/>
+                このサイトは、Next.js と TypeScript で構築されています。<br/><br/>
+                現在は大学生で、情報系の分野を専攻しています。<br/>新しいことに挑戦することが好きで、自分のモチベーション維持に役立てるためにブログを作成しました。</p>
             </div>
       </main>
     )
