@@ -11,7 +11,7 @@ export default async function Blog() {
             {posts.length > 0 ?(
             posts.map((post, index) => (
                 <div key={index}>
-                    <div className="h-full flex-col items-center mb-8 justify-center flex">
+                    <div className="h-full flex-col items-center mb-8 text-center px-2 justify-center flex">
                         <div className="text-lg font-semibold text-gray-400">
                             <span>{post.date}</span>
                         </div>

@@ -37,7 +37,7 @@ export default function DropdownMenu(){
             <div 
                 ref={menuRef} 
                 className={`origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 transition-all duration-300 ease-out transform 
-                ${isOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10 pointer-events-none"}`}
+                ${isOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10 pointer-events-none hidden"}`}
                 style={{ overflow: isOpen ? "visible" : "hidden" }}
             >
                 <Link href="/" className="block px-4 py-2 text-gray-600 font-medium hover:text-sky-600" onClick={() => setIsOpen(false)}>Home</Link>

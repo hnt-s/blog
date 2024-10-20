@@ -18,8 +18,8 @@ export default function Rootlayout({
 
   const isDarkMode = typeof window !== "undefined" && localStorage.getItem("darkmode") === "true";
   return (
-    <html lang='ja' className={isDarkMode ? "dark" : ""}>
-      <body className="dark:bg-gray-900 text-gray-600 dark:text-gray-900 flex flex-col min-h-screen ">
+    <html lang='ja' className={isDarkMode ? "dark" : ""} >
+      <body className="dark:bg-gray-900 text-gray-600 dark:text-gray-900 flex flex-col min-h-screen">
         <div className="flex items-center justify-between pt-10 p-2 lg:pl-48 lg:pr-48 w-full ">
           <Link aria-label="blog tree" href="/" className="flex items-center">
             <img src="/static/logo.png" alt="logo" className="w-12 h-12 rounded" />
