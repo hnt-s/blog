@@ -2,12 +2,21 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 
+export interface PostType {
+  title: string
+  tags: string[]
+  date:string
+  id:number
+  description:string
+}
+
+
 //投稿のファイル名を取得
 export default async function getPosts() {
     const postsDirectory = path.join(process.cwd(), "src/app/posts");
     const filenames = fs.readdirSync(postsDirectory);
   
-    const posts = await Promise.all(
+    const posts: PostType[] = await Promise.all(
       filenames.map(async (filename) => {
         //ファイルのフルパスを取得
         const filePath = path.join(postsDirectory, filename);

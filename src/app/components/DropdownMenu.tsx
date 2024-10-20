@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useRef, ReactElement, ReactEventHandler} from "react"
+import { useState, useEffect, useRef} from "react"
 import Link from "next/link"
 
 export default function DropdownMenu(){
@@ -25,7 +25,7 @@ export default function DropdownMenu(){
 
     return (
         <div className="dark:text-white sm:hidden relative inline-block text-left">
-            <button aria-label="Toggle Menu" className="hover:text-sky-600" onClick={isOpen ?  (e: React.MouseEvent<HTMLButtonElement>)=>{} : () => setIsOpen(true)}>
+            <button aria-label="Toggle Menu" className="hover:text-sky-600" onClick={() =>setIsOpen(!isOpen)}>
                 <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-8 h-8">
                     <path 
                         fillRule="evenodd" 

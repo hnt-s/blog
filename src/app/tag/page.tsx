@@ -1,11 +1,12 @@
 import Link from "next/link";
 import getPosts from "../actions/getpost";
+import { PostType } from "../actions/getpost";
 
 export default async function Tags(){
     const posts = await getPosts();
 
     //タグの数をカウント
-    const tagCount = posts.reduce((acc: Record<string, number>, post:any)=>{
+    const tagCount = posts.reduce((acc: Record<string, number>, post: PostType)=>{
         post.tags.forEach((tag:string)=>{
             acc[tag] = (acc[tag] || 0) + 1; //重複でカウント
         });
