@@ -9,7 +9,7 @@ const postsDirectory = path.join(process.cwd(), 'src/app/posts');
 
 
 // 指定されたIDの投稿を取得
-export async function getPostById(id: string) {
+const getPostById = async(id: string) => {
   const fullPath = path.join(postsDirectory, `${id}.md`);
   const fileContents = fs.readFileSync(fullPath, 'utf8');
 
