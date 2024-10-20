@@ -3,8 +3,8 @@ import Link from "next/link";
 export default function About(){
     return (
         <main>
-            <div className="flex justify-between pt-10 pl-10 border-b border-gray-200">
-                <h1 className="text-3xl font-semibold leading-9">About</h1>
+            <div className="flex justify-center border-b border-gray-200 items-center p-3">
+                <h1 className="text-3xl font-semibold leading-9 text-center">About</h1>
             </div>
             <div className="flex-col flex justify-center items-center p-5">
                 <img src="/static/logo.png" alt="logo" className="w-40 h-40 rounded" />
@@ -12,7 +12,7 @@ export default function About(){
             </div>
             <div className="flex justify-center mb-5">
                 <Link href="https://github.com/hnt-s" target="_blank">
-                    <img src="/static/github_icon.png" alt="github" className="w-7 h-7 rounded" />
+                    <img src="/static/github_icon.png" alt="github" className="w-7 h-7 rounded dark:invert" />
                 </Link>
             </div>
             <div className="text-center pb-10">

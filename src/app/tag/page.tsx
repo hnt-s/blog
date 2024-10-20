@@ -15,8 +15,8 @@ export default async function Tags(){
 
     return (
         <main>
-            <div className="flex justify-between pt-10 pl-10 border-b border-gray-200">
-                <h1 className="text-3xl font-semibold leading-9">Tags</h1>
+            <div className="flex justify-center border-b border-gray-200 items-center p-3">
+                <h1 className="text-3xl font-semibold leading-9 text-center">Tags</h1>
             </div>
             <ul style={{listStyle: "none"}} className="pt-5 p-5">
                 {Object.entries(tagCount).map(([tag, count])=>(

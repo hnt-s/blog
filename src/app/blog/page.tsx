@@ -5,13 +5,13 @@ export default async function Blog() {
     const posts = await getPosts();
     return (
         <main>
-            <div className="flex justify-between pt-10 pl-10 border-b border-gray-200">
-                <h1 className="text-3xl font-semibold leading-9">All Posts</h1>
+            <div className="flex justify-center border-b border-gray-200 items-center p-3">
+                <h1 className="text-3xl font-semibold leading-9 text-center">All Posts</h1>
             </div>
             {posts.length > 0 ?(
             posts.map((post, index) => (
                 <div key={index}>
-                    <div className="h-full flex-col items-center mb-8 text-center px-2 justify-center flex">
+                    <div className="h-full flex-col items-center mb-8 text-center px-2 mt-4 justify-center flex">
                         <div className="text-lg font-semibold text-gray-400">
                             <span>{post.date}</span>
                         </div>
