@@ -32,10 +32,10 @@ export default async function PostDetail({params}: {params: {id: string}}) {
     const post = await getPostById(params.id);
     
     return (
-        <main className="pt-10 w-full container mx-auto">
+        <main className="pt-10 w-full container mx-auto px-3">
             <p className="text-sm pb-2">{post.date}</p>
             <h1 className="flex text-3xl font-semibold leading-9">{post.title}</h1>
-            <div className="px-3 prose dark:prose-dark mt-6 mb-10 text-gray-600 " dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
+            <div className="prose dark:prose-dark mt-6 mb-10 text-gray-600 " dangerouslySetInnerHTML={{ __html: post.contentHtml }} />
         </main>
     )
 }
