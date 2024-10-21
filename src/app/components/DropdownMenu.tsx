@@ -6,10 +6,14 @@ import Link from "next/link"
 export default function DropdownMenu(){
     const [isOpen, setIsOpen] = useState(false);
     const menuRef = useRef<HTMLDivElement>(null);//メニューの参照を作成
+    const menuButtonRef = useRef<HTMLButtonElement>(null);//メニューボタンの参照を作成
 
     const handleClickOutside = (event: MouseEvent) => {
         //メニューが開いているとき、クリックした場所がメニューの外側ならメニューを閉じる
-        if (menuRef.current && !menuRef.current.contains(event.target as Node)) {
+        if (
+            menuRef.current && !menuRef.current.contains(event.target as Node) &&
+            menuButtonRef.current && !menuButtonRef.current.contains(event.target as Node)
+        ) {
             setIsOpen(false);
         }
     };
@@ -25,7 +29,7 @@ export default function DropdownMenu(){
 
     return (
         <div className="dark:text-white sm:hidden relative inline-block text-left">
-            <button aria-label="Toggle Menu" className="hover:text-sky-600" onClick={() =>setIsOpen(!isOpen)}>
+            <button aria-label="Toggle Menu" className="hover:text-sky-600" onClick={() => setIsOpen(!isOpen)} ref={menuButtonRef}>
                 <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-8 h-8">
                     <path 
                         fillRule="evenodd" 
