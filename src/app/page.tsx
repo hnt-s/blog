@@ -18,8 +18,8 @@ export default async function Home() {
                 <div className="text-lg font-semibold text-gray-400">
                   <span>{post.date}</span>
                 </div>
-                <Link href={`/blog/${post.id}`} className="text-center text-2xl font-semibold leading-9 p-3 hover:text-sky-600 hover:underline">{post.title}</Link>
-                <p className="p-3">{post.description}</p>
+                <Link href={`/blog/${post.id}`} className="text-center text-2xl px-3 font-semibold leading-9 hover:text-sky-600 hover:underline">{post.title}</Link>
+                <p className="mt-1 px-3">{post.description}</p>
                 <div>
                   {post.tags.map((tag: string, idx: number) => (
                       <Link href={`/tag/${tag}`} key={idx} className="text-blue-500 hover:text-blue-700 hover:underline">#{tag} </Link>
