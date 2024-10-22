@@ -26,7 +26,7 @@ export default function Rootlayout({
             <h1 className="text-2xl dark:text-white font-semibold ml-2">Blog Tree</h1>
           </Link>
 
-          <div className="flex space-x-4 leading-5 text-lg sm:space-x-6">
+          <div className="flex space-x-4 leading-5 text-lg items-center sm:space-x-6">
             <Link className="hidden text-gray-600 font-semibold sm:block" href="/blog">Blog</Link>
             <Link className="hidden text-gray-600 font-semibold sm:block" href="/tag">Tags</Link>
             <Link className="hidden text-gray-600 font-semibold sm:block" href="/about">About</Link>
