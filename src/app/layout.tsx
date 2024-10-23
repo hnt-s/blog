@@ -27,9 +27,9 @@ export default function Rootlayout({
           </Link>
 
           <div className="flex space-x-4 leading-5 text-lg items-center sm:space-x-6">
-            <Link className="hidden text-gray-600 font-semibold sm:block" href="/blog">Blog</Link>
-            <Link className="hidden text-gray-600 font-semibold sm:block" href="/tag">Tags</Link>
-            <Link className="hidden text-gray-600 font-semibold sm:block" href="/about">About</Link>
+            <Link className="hidden text-gray-600 font-semibold sm:block dark:text-white" href="/blog">Blog</Link>
+            <Link className="hidden text-gray-600 font-semibold sm:block dark:text-white" href="/tag">Tags</Link>
+            <Link className="hidden text-gray-600 font-semibold sm:block dark:text-white" href="/about">About</Link>
 
             <DarkModeButton />
             <DropdownMenu/>

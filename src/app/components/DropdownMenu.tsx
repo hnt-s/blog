@@ -28,7 +28,7 @@ export default function DropdownMenu(){
     }, []);
 
     return (
-        <div className="dark:text-white sm:hidden relative inline-block text-left">
+        <div className="dark:text-white relative inline-block text-left">
             <button aria-label="Toggle Menu" className="hover:text-sky-600" onClick={() => setIsOpen(!isOpen)} ref={menuButtonRef}>
                 <svg xmlns="https://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" className="w-8 h-8">
                     <path 
