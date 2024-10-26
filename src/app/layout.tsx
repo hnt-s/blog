@@ -2,8 +2,8 @@
 import "./globals.css"
 import Link from "next/link"
 import React from "react"
-import DropdownMenu from "./components/DropdownMenu"
-import DarkModeButton from "./components/DarkModeButton"
+import DropdownMenu from "../components/DropdownMenu"
+import DarkModeButton from "../components/DarkModeButton"
 
 export const metadata = {
   title: 'Blog Tree',
@@ -37,6 +37,7 @@ export default function Rootlayout({
         </div>
 
         <main className="text-gray-600 dark:text-white flex-grow lg:pl-48 lg:pr-48">{children}</main>
+
         <footer className="text-center">
           <p>&copy; 2024 Blog Tree. All rights reserved.</p>
         </footer>

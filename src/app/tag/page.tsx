@@ -1,6 +1,6 @@
 import Link from "next/link";
-import getPosts from "../actions/getpost";
-import { PostType } from "../actions/getpost";
+import getPosts from "../../actions/getpost";
+import { PostType } from "../../actions/getpost";
 
 export default async function Tags(){
     const posts = await getPosts();
