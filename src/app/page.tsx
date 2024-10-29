@@ -1,8 +1,13 @@
 import Link from "next/link";
-import getPosts from "../actions/getpost";
+import { getPostList } from "@/actions/blog";
 
 export default async function Home() {
-  const posts = await getPosts();
+  const { success, blogs } = await getPostList();
+
+  // 降順にソート
+  const sortedBlogs = blogs
+  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+  .map(blog => ({ ...blog, date: blog.date.substring(0, 10) }));
 
   return (
       <main>
@@ -11,14 +16,14 @@ export default async function Home() {
           <p className="text-3xl dark:text-white font-semibold leading-9 pt-2">Blog Tree</p>
           <p className="text-gray-500 pt-2">読んだ本や学んだ技術をまとめた記録ブログです。</p>
         </div>
-          {posts.length > 0 ?(
-          posts.map((post, index) => (
+          {sortedBlogs.length > 0 ?(
+          sortedBlogs.map((post, index) => (
             <div key={index}>
               <div className="h-full flex-col mb-8 justify-center items-center flex">
                 <div className="text-lg font-semibold text-gray-400">
                   <span>{post.date}</span>
                 </div>
-                <Link href={`/blog/${post.id}`} className="text-center text-2xl px-3 font-semibold leading-9 hover:text-sky-600 hover:underline">{post.title}</Link>
+                <Link href={`/blog/${post._id}`} className="text-center text-2xl px-3 font-semibold leading-9 hover:text-sky-600 hover:underline">{post.title}</Link>
                 <p className="mt-1 px-3">{post.description}</p>
                 <div>
                   {post.tags.map((tag: string, idx: number) => (

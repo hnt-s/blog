@@ -40,7 +40,7 @@ export interface BlogType {
 }
 
 // 投稿一覧取得
-export const getBlogList = async () => {
+export const getPostList = async () => {
     const options: RequestInit = {
         method: "GET",
         cache: "no-store",
@@ -60,7 +60,7 @@ export const getBlogList = async () => {
 }
 
 // 投稿詳細取得
-export const getBlogDetail = async ({ id }: { id: string }) => {
+export const getPostDetail = async ({ id }: { id: string }) => {
     const options: RequestInit = {
         method: "GET",
         cache: "no-store",
@@ -79,37 +79,59 @@ export const getBlogDetail = async ({ id }: { id: string }) => {
     return { success: true, blog }
 }
 
+// タグ絞り込み
+export const getTagPosts = async ({ tags }: { tags: string }) => {
+    const options: RequestInit = {
+        method: "GET",
+        cache: "no-store",
+    }
+    //タグ絞り込み
+    const result = await fetchAPI(`/api/blog/read/${tags}/`, options)
+
+    if (!result.success) {
+        console.error(result.error)
+        return { success: false, blog: null }
+    }
+
+    const blogs: BlogType[] = result.data
+
+    return { success: true, blogs }
+}
+
 interface CreateBlogType {
-    accessToken: string
     title: string
-    tag: string
+    description: string
+    tags: string[]
     content: string
+    date: string
 }
 
 // 新規投稿
 export const createBlog = async ({
-    accessToken,
     title,
-    tag,
+    description,
+    tags,
     content,
+    date,
 }: CreateBlogType) => {
     const body = JSON.stringify({
         title: title,
+        description: description,
         content: content,
-        tag: tag,
+        tag: tags,
+        date: date,
     })
 
     const options = {
         method: "POST",
         headers: {
-            Authorization: `JWT ${accessToken}`,
             "Content-Type": "application/json",
         },
         body,
     }
 
     // 新規投稿を送信
-    const result = await fetchAPI("/api/blogs/", options)
+    const result = await fetchAPI("/api/blog/create", options)
 
     if (!result.success) {
         console.error(result.error)
@@ -122,38 +144,39 @@ export const createBlog = async ({
 }
 
 interface UpdateBlogType {
-    accessToken: string
-    blogId: string
+    _id: string
     title: string
-    tag: string
+    description: string
+    tags: string[]
     content: string
 }
 
 // 投稿編集
 export const updateBlog = async ({
-    accessToken,
-    blogId,
+    _id,
     title,
+    description,
+    tags,
     content,
-    tag,
 }: UpdateBlogType) => {
     const body = JSON.stringify({
+        _id,
         title: title,
+        description: description,
+        tags: tags,
         content: content,
-        tag: tag,
     })
 
     const options = {
         method: "PATCH",
         headers: {
-            Authorization: `JWT ${accessToken}`,
             "Content-Type": "application/json",
         },
         body,
     }
 
     // 投稿編集を送信
-    const result = await fetchAPI(`/api/blogs/${blogId}/`, options)
+    const result = await fetchAPI(`/api/blog/update/`, options)
 
     if (!result.success) {
         console.error(result.error)
@@ -164,21 +187,24 @@ export const updateBlog = async ({
 }
 
 interface DeleteBlogType {
-    accessToken: string
-    blogId: string
+    _id: string
 }
 
 // 投稿削除
-export const deleteBlog = async ({ accessToken, blogId }: DeleteBlogType) => {
+export const deleteBlog = async ({ _id }: 
+    DeleteBlogType) => {
+        const body = JSON.stringify({
+            _id,
+        })
+        
     const options = {
         method: "DELETE",
-        headers: {
-            Authorization: `JWT ${accessToken}`,
-        },
+        headers: {},
+        body,
     }
 
     // 投稿削除を送信
-    const result = await fetchAPI(`/api/blogs/${blogId}/`, options)
+    const result = await fetchAPI(`/api/blog/delete/`, options)
 
     if (!result.success) {
         console.error(result.error)

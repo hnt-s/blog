@@ -42,11 +42,11 @@ export default function DropdownMenu(){
                 ref={menuRef} 
                 className={`origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 transition-all duration-300 ease-out transform 
                 ${isOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10 pointer-events-none hidden"}`}
-                style={{ overflow: isOpen ? "visible" : "hidden" }}
+                style={{ overflow: isOpen ? "visible" : "hidden", zIndex:1000 }}
             >
                 <Link href="/" className="block px-4 py-2 text-gray-600 font-medium hover:text-sky-600" onClick={() => setIsOpen(false)}>Home</Link>
                 <Link href="/blog" className="block px-4 py-2 text-gray-600 font-medium hover:text-sky-600" onClick={() => setIsOpen(false)}>Blog</Link>
-                <Link href="/tag" className="block px-4 py-2 text-gray-600 font-medium hover:text-sky-600" onClick={() => setIsOpen(false)}>Tags</Link>
+                <Link href="/tags" className="block px-4 py-2 text-gray-600 font-medium hover:text-sky-600" onClick={() => setIsOpen(false)}>Tags</Link>
                 <Link href="/about" className="block px-4 py-2 text-gray-600 font-medium hover:text-sky-600" onClick={() => setIsOpen(false)}>About</Link>
             </div>
         </div>

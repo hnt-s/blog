@@ -1,9 +1,9 @@
 import Link from "next/link";
-import { getBlogList } from "@/actions/blog";
+import { getPostList } from "@/actions/blog";
   
 
 export default async function Blog() {
-    const { success, blogs } = await getBlogList();
+    const { success, blogs } = await getPostList();
 
     if (!success) {
         return (
@@ -11,21 +11,20 @@ export default async function Blog() {
             投稿の取得に失敗しました
           </div>
         )
-      }
-    
-      if (blogs.length === 0) {
-        return (
-          <div className="text-center text-sm text-gray-500">投稿がありません</div>
-        )
-      }
+    }
+
+    // 降順にソート
+    const sortedBlogs = blogs
+        .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+        .map(blog => ({ ...blog, date: blog.date.substring(0, 10) }));
 
     return (
         <main>
             <div className="flex justify-center border-b border-gray-200 items-center p-3">
                 <h1 className="text-3xl font-semibold leading-9 text-center">All Posts</h1>
             </div>
-            {blogs.length > 0 ?(
-            blogs.map((post, index) => (
+            {sortedBlogs.length > 0 ?(
+            sortedBlogs.map((post, index) => (
                 <div key={index}>
                     <div className="h-full flex-col items-center mb-8 text-center px-3 mt-4 justify-center flex">
                         <div className="text-lg font-semibold text-gray-400">

@@ -1,13 +1,14 @@
 import { NextResponse } from "next/server";
 import connectDB from "@/utils/connect";
 import { BlogModel } from "@/utils/schema";
+
 export async function DELETE(request: Request) {
-    const { id } = await request.json();
+    const { _id } = await request.json();
 
     try {
         await connectDB();
 
-        const deletedItem = await BlogModel.findByIdAndDelete(id);
+        const deletedItem = await BlogModel.findByIdAndDelete(_id);
 
         if (!deletedItem) {
             return NextResponse.json({ message: "アイテムが見つかりません" });

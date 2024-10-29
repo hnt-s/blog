@@ -1,14 +1,13 @@
 import Link from "next/link";
-import getPosts from "../../actions/getpost";
-import { PostType } from "../../actions/getpost";
+import { getPostList } from "@/actions/blog";
 
 export default async function Tags(){
-    const posts = await getPosts();
+    const { success, blogs } = await getPostList();
 
     //タグの数をカウント
-    const tagCount = posts.reduce((acc: Record<string, number>, post: PostType)=>{
-        post.tags.forEach((tag:string)=>{
-            acc[tag] = (acc[tag] || 0) + 1; //重複でカウント
+    const tagCount = blogs.reduce((acc: { [key: string]: number }, post) => {
+        post.tags.forEach((tag: string) => {
+            acc[tag] = (acc[tag] || 0) + 1; // 重複でカウント
         });
         return acc;
     }, {});
@@ -21,7 +20,7 @@ export default async function Tags(){
             <ul style={{listStyle: "none"}} className="pt-5 p-5">
                 {Object.entries(tagCount).map(([tag, count])=>(
                     <li key={tag} className="inline-block p-2">
-                        <Link href={`/tag/${tag}`} className="text-blue-500 hover:text-blue-700">{tag}</Link>
+                        <Link href={`/tags/${tag}`} className="text-blue-500 hover:text-blue-700">{tag}</Link>
                         <p style={{display: "inline"}}> ({count})</p>
                     </li>
                 ))}

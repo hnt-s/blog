@@ -1,5 +1,4 @@
 import mongoose from "mongoose"
-import { env } from "process";
 
 const connectDB = async() => {
     try {

@@ -1,4 +1,4 @@
-import { getBlogDetail } from '@/actions/blog';
+import { getPostDetail } from '@/actions/blog';
 import markdownToHtml from 'zenn-markdown-html';
 
 interface Context {
@@ -9,7 +9,7 @@ interface Context {
 
 export default async function PostDetail({params}: Context) {
   const { id } = params
-  const { success, blog } = await getBlogDetail({ id });
+  const { success, blog } = await getPostDetail({ id });
 
   if (!success) {
       return (
@@ -19,19 +19,19 @@ export default async function PostDetail({params}: Context) {
       )
     }
   
-    if (blog === null) {
-      return (
-        <div className="text-center text-sm text-gray-500">投稿がありません</div>
-      )
-    }
-    const contentHtml = await markdownToHtml(blog.content);
+  if (blog === null) {
     return (
-        <div className="pt-10 w-full container mx-auto px-3">
-          <div className='flex flex-col items-center'>
-            <p className="text-sm pb-2">{blog.date}</p>
-            <h1 className="flex text-3xl font-semibold leading-9">{blog.title}</h1>
-            <div className="prose dark:prose-dark mt-6 mb-10 text-gray-600 " dangerouslySetInnerHTML={{ __html: contentHtml }} />
-          </div>
+      <div className="text-center text-sm text-gray-500">投稿がありません</div>
+    )
+  }
+  const contentHtml = await markdownToHtml(blog.content);
+  return (
+      <div className="pt-10 w-full container mx-auto px-3">
+        <div className='flex flex-col items-center'>
+          <p className="text-sm pb-2">{blog.date}</p>
+          <h1 className="flex text-3xl font-semibold leading-9">{blog.title}</h1>
+          <div className="prose dark:prose-dark mt-6 mb-10 text-gray-600 " dangerouslySetInnerHTML={{ __html: contentHtml }} />
         </div>
+      </div>
     )
 }
