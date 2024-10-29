@@ -118,7 +118,7 @@ export const createBlog = async ({
         title: title,
         description: description,
         content: content,
-        tag: tags,
+        tags: tags,
         date: date,
     })
 
@@ -196,7 +196,7 @@ export const deleteBlog = async ({ _id }:
         const body = JSON.stringify({
             _id,
         })
-        
+
     const options = {
         method: "DELETE",
         headers: {},

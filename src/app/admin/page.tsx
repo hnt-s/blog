@@ -39,6 +39,11 @@ export default async function Admin() {
                             {post.title}
                         </Link>
                         <p>{post.description}</p>
+                        <div>
+                            {post.tags.map((tag: string, idx: number) => (
+                                <Link href={`/tag/${tag}`} key={idx} className="text-blue-500 font-Italic hover:text-blue-700 hover:underline">#{tag} </Link>
+                            ))}
+                        </div>
                     </div>
                     <div className="flex items-center lg:absolute lg:right-56 right-5 mt-4 lg:mt-0">
                         <Link href={`/admin/update/${post._id}`}>

@@ -9,18 +9,18 @@ const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     const formData = new FormData(event.currentTarget);
     const title = formData.get('title') as string;
     const description = formData.get('description') as string;
-    const tag = formData.get('tags') as string;
+    const tags = formData.get('tags') as string;
     const content = formData.get('content') as string;
 
     //タグをカンマで分割
-    const tags = tag.split(',').map((tag) => tag.trim());
+    const tagArray = tags.split(',').map((tags) => tags.trim());
 
     //日付を自動取得
     const date = new Date().toISOString(); //ISO形式で取得
 
     try {
         // ブログ投稿の作成
-        await createBlog({ title, description, tags, content, date });
+        await createBlog({ title, description, tags: tagArray, content, date });
 
         // 成功したら管理者ページにリダイレクト
         window.location.href = '/admin'; 
@@ -57,11 +57,12 @@ export default function CreatePosts() {
                         />
                     </div>
                     <div>
-                        <label className="block text-gray-700">タグ（カンマで区切って入力）</label>
+                        <label className="block text-gray-700">タグ</label>
                         <input
                             type="text"
                             name="tags"
                             className="w-full px-4 py-2 border rounded-md"
+                            placeholder="ex. javascript, nextjs, ..."
                         />
                     </div>
                     <div>
