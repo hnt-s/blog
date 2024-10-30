@@ -9,9 +9,17 @@ interface Context {
   };
 }
 
+interface Blogtype {
+    _id: string;
+    title: string;
+    description: string;
+    tags: string[];
+    content: string;
+}
+
 export default function PostUpdate({params}: Context) {
     const { id } = params;
-    const [blog, setBlog] = useState<any | null>(null);
+    const [blog, setBlog] = useState<Blogtype | null>(null);
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
 
