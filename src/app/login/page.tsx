@@ -2,7 +2,6 @@
 'use client'
 
 import { useForm, SubmitHandler } from 'react-hook-form'
-import { useState } from 'react'
 import { signIn } from 'next-auth/react'
 import { toast } from 'react-hot-toast'
 import AuthProvider from "@/components/AuthProvider"

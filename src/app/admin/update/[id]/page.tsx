@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react';
 import { getPostDetail, updateBlog } from '@/actions/blog';
 import Link from 'next/link';
-import MarkdownPreview from '@/components/MarkdownPreview';
 
 interface Context {
   params: {

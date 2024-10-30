@@ -6,17 +6,13 @@ export async function PATCH(request: Request) {
     const reqBody = await request.json();
     const { _id, ...updateData } = reqBody;  // `id`を取り出し、更新するデータを残す
 
-    try {
-        await connectDB();
-        const updatedItem = await BlogModel.findByIdAndUpdate(_id, updateData, { new: true });
+    await connectDB();
+    const updatedItem = await BlogModel.findByIdAndUpdate(_id, updateData, { new: true });
 
-        if (!updatedItem) {
-            return NextResponse.json({ message: "アイテムが見つかりません" });
-        }
-
-        console.log("アイテム更新成功");
-        return NextResponse.json(updatedItem);
-    } catch (error) {
-        return NextResponse.json({ message: "アイテム更新失敗" });
+    if (!updatedItem) {
+        return NextResponse.json({ message: "アイテムが見つかりません" });
     }
+
+    console.log("アイテム更新成功");
+    return NextResponse.json(updatedItem);
 }
