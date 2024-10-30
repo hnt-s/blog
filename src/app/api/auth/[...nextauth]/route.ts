@@ -3,6 +3,7 @@ import { getUserFromDb, connectDB } from "@/utils/db";
 import { signInSchema } from "@/lib/zod";
 import NextAuth from "next-auth";
 
+// authOptionsの型を推論
 const authOptions = {
   providers: [
     CredentialsProvider({
@@ -22,7 +23,13 @@ const authOptions = {
       }
     })
   ],
+  pages: {
+    signIn: '/auth/signin',
+  },
 };
 
 const handler = NextAuth(authOptions);
-export { handler as GET, handler as POST };
+
+// GET, POSTリクエストのハンドラとしてエクスポート
+export const GET = handler;
+export const POST = handler;
