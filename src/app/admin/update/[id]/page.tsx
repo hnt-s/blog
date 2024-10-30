@@ -15,8 +15,6 @@ export default function PostUpdate({params}: Context) {
     const [blog, setBlog] = useState<any | null>(null);
     const [error, setError] = useState<string | null>(null);
     const [loading, setLoading] = useState<boolean>(true);
-    const [markdown, setMarkdown] = useState<string>('');
-    const [showPreview, setShowPreview] = useState<boolean>(false);
 
     // 初期データの取得
     useEffect(() => {
@@ -32,11 +30,6 @@ export default function PostUpdate({params}: Context) {
         fetchData()
     }, [id])
 
-    //マークダウン変更
-    const handleMarkdownChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-        setMarkdown(event.target.value);
-    }
-
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         const formData = new FormData(event.currentTarget);
@@ -50,7 +43,7 @@ export default function PostUpdate({params}: Context) {
 
         try {
             // 更新処理
-            await updateBlog({ _id, title, description, tags, content: markdown })
+            await updateBlog({ _id, title, description, tags, content})
 
             // 成功したら管理者ページにリダイレクト
             window.location.href = '/admin'; 
@@ -116,9 +109,7 @@ export default function PostUpdate({params}: Context) {
                             required
                             className="w-full h-80 px-4 py-2 border rounded-md "
                             defaultValue={blog.content}
-                            onChange={handleMarkdownChange}
                         />
-                        <MarkdownPreview markdownText={markdown} />
                     </div>
                     <div className="flex justify-center">
                         <button

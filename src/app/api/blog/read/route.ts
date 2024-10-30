@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import connectDB from "@/utils/connect";
 import { BlogModel } from "@/utils/schema";
-export async function GET(request: Request) {
+export async function GET() {
     try {
         await connectDB()
         const items = await BlogModel.find()

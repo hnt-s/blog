@@ -12,6 +12,15 @@ export default async function Tags(){
         return acc;
     }, {});
 
+
+    if (!success) {
+        return (
+            <div className="text-center text-sm text-gray-500">
+                投稿の取得に失敗しました
+            </div>
+        )
+    }
+    
     return (
         <main>
             <div className="flex justify-center border-b border-gray-200 items-center p-3">

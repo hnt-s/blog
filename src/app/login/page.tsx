@@ -14,10 +14,8 @@ interface FormData {
 
 export default function Login() {
     const {register, handleSubmit, formState: {errors}} = useForm<FormData>();
-    const [isLoading, setIsLoading] = useState(false);
 
     const onSubmit: SubmitHandler<FormData> = async (data) => {
-        setIsLoading(true);
 
         await signIn('credentials', {
             redirect: false,  // 自動的にリダイレクトしないようにする
@@ -34,12 +32,6 @@ export default function Login() {
                 window.location.href = "/admin"
                 console.log("ok")
             }
-        })
-        .catch((error) => {
-            toast.error("ログインに失敗しました")
-        })
-        .finally(() => {
-            setIsLoading(false)
         })
     }
 

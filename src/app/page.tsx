@@ -9,6 +9,15 @@ export default async function Home() {
   .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
   .map(blog => ({ ...blog, date: blog.date.substring(0, 10) }));
 
+
+  if (!success) {
+    return (
+      <div className="text-center text-sm text-gray-500">
+        投稿の取得に失敗しました
+      </div>
+    )
+  }
+  
   return (
       <main>
         <div className="flex-col flex justify-center items-center p-10">
