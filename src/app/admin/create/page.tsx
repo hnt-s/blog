@@ -37,7 +37,7 @@ export default function CreatePosts() {
                 <h1 className="text-3xl font-semibold leading-9 text-center">新規投稿</h1>
             </div>
             <div className="p-6">
-                <form onSubmit={handleSubmit} className="max-w-lg mx-auto space-y-4">
+                <form onSubmit={handleSubmit} className="max-w-lg mx-auto space-y-4 dark:invert">
                 <div>
                         <label className="block text-gray-700">タイトル</label>
                         <input

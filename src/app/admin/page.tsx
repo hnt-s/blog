@@ -45,7 +45,7 @@ export default async function Admin() {
                             ))}
                         </div>
                     </div>
-                    <div className="flex items-center lg:absolute lg:right-56 right-5 mt-4 lg:mt-0">
+                    <div className="flex items-center lg:absolute lg:right-56 right-5 mt-4 lg:mt-0 dark:invert">
                         <Link href={`/admin/update/${post._id}`}>
                             <Image src="/static/edit.jpg" alt="edit" width={28} height={28} />
                         </Link>

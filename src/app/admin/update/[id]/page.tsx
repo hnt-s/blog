@@ -77,7 +77,7 @@ export default function PostUpdate({params}: Context) {
                 <h1 className="text-3xl font-semibold leading-9 text-center">{blog.title}：編集</h1>
             </div>
             <div className="p-6">
-                <form onSubmit={handleSubmit} className="max-w-lg mx-auto space-y-4">
+                <form onSubmit={handleSubmit} className="max-w-lg mx-auto space-y-4 dark:invert">
                     <input type="hidden" name='_id' defaultValue={blog._id} />
                     <div>
                         <label className="block text-gray-700">タイトル</label>

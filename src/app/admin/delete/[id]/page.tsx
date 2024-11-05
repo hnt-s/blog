@@ -49,22 +49,21 @@ export default async function PostDetail({params}: Context) {
             </div>
 
             <p className='text-center'>本当に削除しますか?</p>
-            <form onSubmit={handleSubmit} className="flex justify-center items-center space-x-4 mt-4">
-            <input type="hidden" name="_id" value={id} />
-            <button
-                type="submit"
-                className="px-5 py-3 text-white bg-red-600 hover:bg-red-700 font-medium rounded-lg text-sm text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
-            >
-                削除
-            </button>
-            <Link 
-                href={'/admin'} 
-                className="flex items-center px-5 py-3 text-gray-500 bg-[#e4dede] hover:text-gray-700 font-medium rounded-lg text-sm text-center"
-            >
-                戻る
-            </Link>
-        </form>
-
+            <form onSubmit={handleSubmit} className="flex justify-center items-center space-x-4 mt-4 dark:invert">
+                <input type="hidden" name="_id" value={id} />
+                <button
+                    type="submit"
+                    className="px-5 py-3 text-white bg-red-600 hover:bg-red-700 font-medium rounded-lg text-sm text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+                >
+                    削除
+                </button>
+                <Link 
+                    href={'/admin'} 
+                    className="flex items-center px-5 py-3 text-gray-500 bg-[#e4dede] hover:text-gray-700 font-medium rounded-lg text-sm text-center"
+                >
+                    戻る
+                </Link>
+            </form>
         </div>
     )
 }
