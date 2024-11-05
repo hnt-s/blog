@@ -18,7 +18,6 @@ export default async function PostDetail({params}: Context) {
         </div>
       )
     }
-  
   if (blog === null) {
     return (
       <div className="text-center text-sm text-gray-500">投稿がありません</div>
