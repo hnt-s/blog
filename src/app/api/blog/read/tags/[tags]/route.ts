@@ -9,12 +9,13 @@ interface Context {
 }
 
 export async function GET(request: Request, { params }: Context) {
-    const { tags } = params
+    //デコード済みタグ
+    const { tags } = params;
     try{
         await connectDB()
          // タグを含むブログ投稿を検索
         const items = await BlogModel.find({ tags: { $in: [tags] } });
-        return NextResponse.json({ items });
+        return NextResponse.json( items );
     }catch(error){
         console.error("アイテム読み込み失敗:", error);
         return NextResponse.json({ message: "アイテム読み込み失敗" });

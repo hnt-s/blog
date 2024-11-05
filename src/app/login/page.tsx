@@ -1,6 +1,4 @@
-
 'use client'
-
 import { useForm, SubmitHandler } from 'react-hook-form'
 import { signIn } from 'next-auth/react'
 import { toast } from 'react-hot-toast'

@@ -24,8 +24,9 @@ export default async function PostDetail({params}: Context) {
       <div className="text-center text-sm text-gray-500">投稿がありません</div>
     )
   }
-  const contentHtml = await markdownToHtml(blog.content);
 
+  //マークダウンをHTMLに変換
+  const contentHtml = await markdownToHtml(blog.content);
   //日付をYYYY/MM/DDに変換
   const date = blog.date.substring(0, 10)
 

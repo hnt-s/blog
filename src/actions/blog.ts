@@ -85,8 +85,9 @@ export const getTagPosts = async ({ tags }: { tags: string }) => {
         method: "GET",
         cache: "no-store",
     }
+
     //タグ絞り込み
-    const result = await fetchAPI(`/api/blog/read/${tags}/`, options)
+    const result = await fetchAPI(`/api/blog/read/tags/${tags}/`, options)
 
     if (!result.success) {
         console.error(result.error)

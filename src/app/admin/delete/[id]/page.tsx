@@ -15,9 +15,9 @@ const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     const _id = formData.get('_id') as string;
 
     try { 
+
         // 削除処理
         await deleteBlog({_id})
-
         window.location.href = '/admin';
     } catch(error) {
         console.error("削除エラー:", error);
@@ -49,16 +49,22 @@ export default async function PostDetail({params}: Context) {
             </div>
 
             <p className='text-center'>本当に削除しますか?</p>
-            <form onSubmit={handleSubmit} className="flex justify-center space-y-4">
-                <input type="hidden" name="_id" value={blog._id} />
-                <button
-                    type="submit"
-                    className='text-white bg-red-600 hover:bg-red-700 font-medium rounded-lg text-sm px-5 py-1 text-center mr-2 mb-2 dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900'
-                >
-                    削除
-                </button>
-                <Link href={'/admin'} className="px-5 py-1 bg-[#e4dede] text-gray-500 font-semibold leading-9 hover:text-gray-700 hover:underline rounded-lg ml-3">戻る</Link>
-            </form>
+            <form onSubmit={handleSubmit} className="flex justify-center items-center space-x-4 mt-4">
+            <input type="hidden" name="_id" value={id} />
+            <button
+                type="submit"
+                className="px-5 py-3 text-white bg-red-600 hover:bg-red-700 font-medium rounded-lg text-sm text-center dark:bg-red-600 dark:hover:bg-red-700 dark:focus:ring-red-900"
+            >
+                削除
+            </button>
+            <Link 
+                href={'/admin'} 
+                className="flex items-center px-5 py-3 text-gray-500 bg-[#e4dede] hover:text-gray-700 font-medium rounded-lg text-sm text-center"
+            >
+                戻る
+            </Link>
+        </form>
+
         </div>
     )
 }
