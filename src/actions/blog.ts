@@ -2,7 +2,7 @@
 
 // 共通のAPIリクエスト
 const fetchAPI = async (url: string, options: RequestInit) => {
-    const apiUrl = process.env.API_URL
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL
 
     if (!apiUrl) {
         return { success: false, error: "API URLが設定されていません" }
