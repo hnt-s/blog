@@ -126,6 +126,7 @@ export const createBlog = async ({
     const options = {
         method: "POST",
         headers: {
+            //レスポンスデータがJSON
             "Content-Type": "application/json",
         },
         body,
